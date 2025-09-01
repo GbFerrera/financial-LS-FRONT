@@ -17,6 +17,8 @@ import {
   FileText,
   Calendar,
   Archive,
+  User,
+  Users,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -30,6 +32,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  SidebarTrigger,
 } from "@/components/ui/sidebar"
 
 // Dados da empresa financeira
@@ -65,6 +68,17 @@ const data = {
         {
           title: "Visão Geral",
           url: "/",
+        },
+      ],
+    },
+    {
+      title: "Usuários",
+      url: "/users",
+      icon: Users,
+      items: [
+        {
+          title: "Visão Geral",
+          url: "/users",
         },
       ],
     },
@@ -140,7 +154,7 @@ const data = {
         },
         {
           title: "Usuários",
-          url: "/settings/users",
+          url: "/users",
         },
         {
           title: "Integrações",
@@ -197,7 +211,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <div className="flex items-center justify-between">
+          <TeamSwitcher teams={data.teams} />
+          <SidebarTrigger className="ml-auto" />
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={navMainWithActive} />
